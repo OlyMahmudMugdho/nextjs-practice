@@ -1,10 +1,10 @@
 import {Suspense} from "react";
 
-type Params = {
+interface Params {
     id : string
 }
 
-export default async function Page( {params : {id},} : { params : {id : string} } ){
+export default async function Page( {params : {id},} : { params :  Params} ){
     const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`,
         {
             cache: 'no-cache'

@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function Todo() {
     const response = await fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`,
         {
-            cache: 'no-cache'
+            cache: 'default'
         }
         )
     const data =  await response.json();
