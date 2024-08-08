@@ -23,16 +23,16 @@ export function Navbar() {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><Link href="">To-Do</Link></li>
-                        <li><Link href="">Posts</Link></li>
+                        <li><Link href="/todo">To-Do</Link></li>
+                        <li><Link href="/posts">Posts</Link></li>
                     </ul>
                 </div>
-                <Link href={""} className="btn btn-ghost text-xl">daisyUI</Link>
+                <Link href={"/"} className="btn btn-ghost text-xl">Next App</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    <li><Link href="">To-Do</Link></li>
-                    <li><Link href="">Posts</Link></li>
+                    <li><Link href="/todo">To-Do</Link></li>
+                    <li><Link href="/posts">Posts</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
