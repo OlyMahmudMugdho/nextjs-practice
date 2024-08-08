@@ -3,7 +3,11 @@ import {Suspense} from "react";
 import Link from "next/link";
 
 export default async function Todo() {
-    const response = await fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`)
+    const response = await fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`,
+        {
+            cache: 'no-cache'
+        }
+        )
     const data =  await response.json();
     return (
         <main className="flex min-h-screen flex-col items-center justify-start">
