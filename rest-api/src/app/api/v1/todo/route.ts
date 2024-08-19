@@ -1,4 +1,4 @@
-import { isValidTask, Task, tasks } from "@/app/model/tasks"
+import { addTask, isValidTask, Task, tasks, totalTasks } from "@/app/model/tasks"
 import { NextRequest, NextResponse } from "next/server"
 
 
@@ -20,11 +20,11 @@ export const POST = async (req: Request) => {
                 { status: 400 }
             )
         }
-
-        tasks.push(task)
-        return NextResponse.json(tasks, { status: 200 })
+        const savedTask: Task = addTask(task)
+        return NextResponse.json(savedTask, { status: 200 })
 
     } catch (error) {
+        console.log(error)
         return NextResponse.json(
             { "error": true, },
             { status: 500 }
