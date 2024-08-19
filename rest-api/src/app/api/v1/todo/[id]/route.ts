@@ -1,9 +1,8 @@
 import { deleteTask, Task, tasks, totalTasks } from "@/app/model/tasks";
-import { request } from "http";
 import { NextResponse } from "next/server";
 
 
-export const GET = async (request : Request, context : { params : any }) => {
+const getSingleTodo = async (request : Request, context : { params : any }) => {
     const taskId = context.params.id;
 
     try {
@@ -77,3 +76,5 @@ export const DELETE = async (req : Request, context : {params : any}) => {
         )
     }
 }
+
+export const GET = getSingleTodo
