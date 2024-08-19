@@ -1,4 +1,4 @@
-import { Task, tasks, totalTasks } from "@/app/model/tasks";
+import { deleteTask, Task, tasks, totalTasks } from "@/app/model/tasks";
 import { request } from "http";
 import { NextResponse } from "next/server";
 
@@ -41,6 +41,34 @@ export const PUT = async (request : Request, context : { params : any }) => {
 
         return NextResponse.json(tasks[taskId])
         
+    } catch (error) {
+        console.error(error)
+        return NextResponse.json(
+            { "error" : true, "message" : "internal server error" },
+            { status : 500 }
+        )
+    }
+}
+
+
+export const DELETE = async (req : Request, context : {params : any}) => {
+    const taskId = context.params.id;
+    
+    try {
+        if (taskId > totalTasks || taskId <= 0) {
+            return NextResponse.json(
+                { "error" : true, "message" : "invalid task id" },
+                { status : 400 }
+            )
+        }
+
+        deleteTask(parseInt(taskId))
+        
+        return NextResponse.json(
+            { "ok" : true, "message" : "task deleted" },
+            { status : 200 }
+        )
+
     } catch (error) {
         console.error(error)
         return NextResponse.json(
