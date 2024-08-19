@@ -7,7 +7,7 @@ export interface Task {
 export let totalTasks : number = 0;
 
 
-export const tasks : Task[] = [];
+export let tasks : Task[] = [];
 
 
 export function isValidTask(obj : any) {
@@ -18,4 +18,8 @@ export function addTask(task : Task) : Task {
     tasks.push({...task, id : totalTasks + 1})
     totalTasks ++
     return tasks[totalTasks - 1]
+}
+
+export function deleteTask(taskId : number) {
+    tasks = tasks.filter(task => task.id !== taskId)
 }
